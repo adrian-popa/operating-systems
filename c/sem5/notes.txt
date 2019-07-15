@@ -1,0 +1,25 @@
+Threads:
+
+  pthread_create
+  pthread_join
+  void* thrFn(void* p)
+  gcc -pthread -Wall ...
+
+1. Write a program that receives strings as command line arguments, and for each argument
+launch a thread to capitalize the string (initial).
+
+2. ...
+
+3. Given n pairs of cmd line args (int. positive numbers), count how many of these pairs
+return a sum which is even, how many return a sum which is odd, and how many have one of
+the args not a positive number.
+
+4. Write a program in which we have a global variable n = 0. Create 10 threads that generate
+a random value for n. Create 50 thread that check if the value of n is odd (& print 1) and
+if it is even (print 0).
+
+  pthread_rwlock_rdlock     { few writers
+                _wrlock     { many readers
+
+  pthread_rwlock_unlock
+

@@ -1,0 +1,77 @@
+Operating systems
+-Notes-
+-- sem 1 --
+
+I. Commands:
+
+ls -l /etc - lists the content of a specific folder (etc being a path*)
+   -a
+   -all
+
+ / - path divider in UNIX
+
+
+ - Regular expressions rules:
+
+1. Every character in a regular expression can have two meanings - normal / special (\ - escape character to switch between)
+2. Depending on the context of the program used, special meaning is with / without the '\'
+
+ . - matches any single character
+ \ - escape character, changes meaning between special / normal
+ [abc] - any character from the list 'abc'
+ [a-z] - any lowercase letter in the range 'a-z'
+  A-Z - uppercase
+  0-9 - digits
+ [^0-9] - any character except '0-9': ^ (negation)
+ [^09-] - anything except '09-'
+
+ ^ - beginning of line
+ $ - end of line
+ \< - beginning of word
+ \> - end of word
+ \(  \) - group of characters into an expression
+ * - previous expression 0 or more times
+ \+ - previous expression 1 or more times
+ \? - previous expression 0 or once
+ \{a, b\} - previous expression at least a times and at most b times
+ \/ - logical OR
+
+Examples:
+
+ [a-zA-Z02468] - all the letters (lower and uppercase) and the even digits
+ [ \t] - space and tab
+ ^[^0-9]\+$ - any character that is not a digit appears one or more times
+ \([Nn][Oo] \)\+ - matches 'NO_no_No '
+
+
+ Grep:
+
+ grep [-options] "regExpr" file.txt - searches for matches of the regExpr string in file.txt 
+      -i - case insensitive	File*.txt
+      -v display lines that do not match
+      -q - 0 if found, 1 if not found
+      -c - count lines
+      -o - only matching part of a matching line
+
+ /etc/passwd
+ username:password:user-id:group-id:user-info:home-directory:shell
+ _________________________________________________________________
+      dan:       x:       :        :  Dan Pop: /path/to/home: bash
+   daniel:			       daniel:			sh
+
+
+Exercises:
+
+a) all lines containing "dan"
+ grep "dan" /etc/passwd
+
+b) grep -i "^dan:" /etc/passwd
+
+c) users without digits in username
+ grep "^[^0-9]\+:" /etc/passwd
+
+d) grep -i "^[^:]*[aeiou][^:]*[aeiou][^:]*:" /etc/passwd
+
+e) grep -i "^[^:]* \([aeiou][^:]*\)\{5,\}:" /etc/passwd
+
+f) grep -v "bash$" /etc/passwd

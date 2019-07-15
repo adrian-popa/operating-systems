@@ -1,0 +1,1 @@
+chmod u=rx,g=rw,o=rwx d.txt

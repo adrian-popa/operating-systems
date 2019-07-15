@@ -1,0 +1,2 @@
+Sa se scrie doua programe .c: p1 si p2. p1 primeste ca argument de la linia de comanda o instructiune BASH (+ instructiuni),
+o executa cu fopen, iar rezultatul il scrie in FIFO, p2 citeste din FIFO si afiseaza pe ecran.

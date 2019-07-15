@@ -1,0 +1,11 @@
+1. cat last.fake | awk '/economica.*Sun/{print $1}' | sort | uniq
+2. cat last.fake | awk '{print $1, $7}' | sed "s/:/ /g" | awk '$2>=23{print $1}' | head -n -1 | sort | uniq
+3. grep ^m ./passwd.fake | awk -F: '$3%7==0{print $5}'
+4. cat ps.fake | grep ^root | awk '{print $6}' | sort | uniq
+5. cat passwd.fake | awk -F: '$1 ~ /88$/ {print $5}' OR awk -F: '$1 ~ /88$/ {print $5}' ./passwd.fake
+6. awk -F: '$3~/^23[0-9]/{print $5}' ./passwd.fake
+7. awk '$1 ~ /^t/ && $2 ~ /pts\/9/ {print $1}' ./last.fake | sort | uniq
+8. awk '$1 ~ /^r/ {print $1}' ./ps.fake | sort | uniq | sed "s/[aeiou]/&&/g" OR sed "s/\([aeiou]\) /\1\1/g"
+9. sed "s/[a-zA-Z0-9 ]//g" ./passwd.fake | sort | uniq
+10. sed "s/[^r]//g" ./passwd.fake | sort | uniq
+11. awk 'BEGIN{sum = 0} {sum += $2} END{print sum/NR}' ./ps.fake
